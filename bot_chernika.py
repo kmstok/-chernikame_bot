@@ -33,11 +33,6 @@ buy_button = ReplyKeyboardMarkup(
 @router.message(F.text == "/start")
 async def start(message: types.Message, state: FSMContext):
     logger.debug("✅ Вошел в обработчик /start")  # Логирование входа в обработчик
-    # Отправляем картинку перед текстом
-    await bot.send_photo(
-        chat_id=message.chat.id,
-        photo="https://github.com/kmstok/-chernikame_bot/blob/main/images/glaza.JPG?raw=true"
-    )
     await message.answer("❤️Приветик! Здесь можешь заказать свой мерч❤️", reply_markup=buy_button)
 
 # Обработчик нажатия "Купить"
@@ -113,12 +108,11 @@ async def process_order(message: types.Message, state: FSMContext):
         # Подтверждаем пользователю
         await message.answer("🍃Готово! Поздравляю с покупкой🍃\n\n"
                              "Мне нужно некоторое время, чтобы рассчитать стоимость отправки. Скоро свяжусь с тобой для оплаты и уточнения деталей ❤️")
-        
-        # Отправляем картинку в конце
-        await bot.send_photo(
-            chat_id=message.chat.id,
-            photo="https://github.com/kmstok/-chernikame_bot/blob/main/images/palec.JPG?raw=true"
-        )
+
+        # Отправка изображений
+        await bot.send_photo(chat_id=message.chat.id, photo="https://i.imgur.com/yTrx5vV.jpg")
+        await bot.send_photo(chat_id=message.chat.id, photo="https://i.imgur.com/GgqvdxJ.jpg")
+
         await state.clear()  # Очистка состояния после завершения
     else:
         logger.error(f"❌ Ошибка: Получено сообщение от пользователя {message.from_user.id}, но состояние не соответствует ожидаемому.")
