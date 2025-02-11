@@ -9,7 +9,11 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from aiogram.utils.markdown import escape_md  # Используем встроенный экранирующий метод
+from aiogram.utils.text_decorations import markdown_decoration
+
+def escape_md(text: str) -> str:
+    return markdown_decoration.quote(text)  # Экранирование Markdown
+  # Используем встроенный экранирующий метод
 
 # === Flask веб-сервер для Render.com ===
 app = Flask(__name__)
