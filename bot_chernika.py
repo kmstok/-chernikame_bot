@@ -33,10 +33,12 @@ buy_button = ReplyKeyboardMarkup(
 @router.message(F.text == "/start")
 async def start(message: types.Message, state: FSMContext):
     logger.debug("✅ Вошел в обработчик /start")  # Логирование входа в обработчик
-    image_url = "https://github.com/kmstok/-chernikame_bot/blob/main/images/glaza.JPG?raw=true"
-    
+    # Отправляем картинку перед текстом
+    await bot.send_photo(
+        chat_id=message.chat.id,
+        photo="https://github.com/kmstok/-chernikame_bot/blob/main/images/glaza.JPG?raw=true"
+    )
     await message.answer("❤️Приветик! Здесь можешь заказать свой мерч❤️", reply_markup=buy_button)
-    await message.answer_photo(image_url, caption="Добро пожаловать в Черничную лавку! 😊")
 
 # Обработчик нажатия "Купить"
 @router.message(F.text == "Купить")
@@ -111,12 +113,16 @@ async def process_order(message: types.Message, state: FSMContext):
         # Подтверждаем пользователю
         await message.answer("🍃Готово! Поздравляю с покупкой🍃\n\n"
                              "Мне нужно некоторое время, чтобы рассчитать стоимость отправки. Скоро свяжусь с тобой для оплаты и уточнения деталей ❤️")
-
-        # Добавляем картинку в ответ
-        image_url = "https://github.com/kmstok/-chernikame_bot/blob/main/images/palec.JPG?raw=true"
-        await message.answer_photo(image_url, caption="Спасибо за покупку! Скоро свяжемся с вами! 🙌")
-
+        
+        # Отправляем картинку в конце
+        await bot.send_photo(
+            chat_id=message.chat.id,
+            photo="https://github.com/kmstok/-chernikame_bot/blob/main/images/palec.JPG?raw=true"
+        )
         await state.clear()  # Очистка состояния после завершения
+    else:
+        logger.error(f"❌ Ошибка: Получено сообщение от пользователя {message.from_user.id}, но состояние не соответствует ожидаемому.")
+        await message.answer("❌ Произошла ошибка с состоянием. Пожалуйста, начни заново.")
 
 # Функция для проверки данных
 def validate_data(full_name, phone, address, email):
