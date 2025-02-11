@@ -1,5 +1,4 @@
 DEBUG:asyncio:Using proactor: IocpProactor
-DEBUG:__main__:\u2705 Бот запущен...
 INFO:aiogram.dispatcher:Start polling
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
@@ -10,32 +9,14 @@ INFO:aiogram.dispatcher:Run polling for bot @chernikame_bot id=7804678382 - 'Чер
 DEBUG:__main__:\u2705 Вошел в обработчик /start
 DEBUG:__main__:\u2705 Вошел в обработчик /start
 DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500445 is handled. Duration 299 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500446 is handled. Duration 300 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500447 is handled. Duration 312 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500448 is handled. Duration 122 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Обработка сообщения 294598394
+DEBUG:__main__:\u2705 Обработка сообщения 294598394
+INFO:aiogram.event:Update id=806500454 is handled. Duration 289 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500453 is handled. Duration 291 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500455 is handled. Duration 291 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500457 is handled. Duration 291 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500456 is handled. Duration 296 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500458 is handled. Duration 321 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500449 is handled. Duration 108 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500450 is handled. Duration 103 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500451 is handled. Duration 105 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 1018150043
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Иванов Иван Иванович
-+79991234567
-Москва, ул. Ленина, д. 5
-example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 1018150043: OrderForm:user_data
-DEBUG:__main__:\u2705 Разобраны данные для пользователя 1018150043 - ФИО: Иванов Иван Иванович, Телефон: +79991234567, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
-DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 1018150043.
-DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500452 is handled. Duration 279 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500459 is handled. Duration 92 ms by bot id=7804678382
