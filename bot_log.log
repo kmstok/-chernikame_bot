@@ -8,126 +8,34 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:aiogram.dispatcher:Run polling for bot @chernikame_bot id=7804678382 - 'Черничная лавка'
 DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500425 is handled. Duration 298 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500426 is handled. Duration 103 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 294598394
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: 89996933903
-Галка Палковна Сергеевна
-example@mail.com
-Москва, ул. Ленина, д. 5
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 294598394: OrderForm:user_data
-DEBUG:__main__:\u2705 Разобраны данные для пользователя 294598394 - ФИО: Галка Палковна Сергеевна, Телефон: 89996933903, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
-DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 294598394.
-DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500427 is handled. Duration 204 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Вошел в обработчик /start
 DEBUG:__main__:\u2705 Вошел в обработчик /start
 DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500428 is handled. Duration 119 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500445 is handled. Duration 299 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Фото для /start отправлено успешно
+INFO:aiogram.event:Update id=806500446 is handled. Duration 300 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Фото для /start отправлено успешно
+INFO:aiogram.event:Update id=806500447 is handled. Duration 312 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик /start
 DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500429 is handled. Duration 118 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500448 is handled. Duration 122 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
 DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500430 is handled. Duration 97 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Пример:
-Иванов Иван Иванович
-+7999123456
-Москва, ул. Ленина, д. 5
-example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-ERROR:__main__:\u274c Ошибка при разборе данных для пользователя 911657126: Не удалось определить все данные. Убедитесь, что указали ФИО, телефон, адрес и email.
-INFO:aiogram.event:Update id=806500431 is handled. Duration 215 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Пример:
-Иванов Иван Иванович
-8999123456
-Москва, ул. Ленина, д. 5
-example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-ERROR:__main__:\u274c Ошибка при разборе данных для пользователя 911657126: Не удалось определить все данные. Убедитесь, что указали ФИО, телефон, адрес и email.
-INFO:aiogram.event:Update id=806500432 is handled. Duration 188 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
+INFO:aiogram.event:Update id=806500449 is handled. Duration 108 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Вошел в обработчик /start
+DEBUG:__main__:\u2705 Фото для /start отправлено успешно
+INFO:aiogram.event:Update id=806500450 is handled. Duration 103 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
+DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
+INFO:aiogram.event:Update id=806500451 is handled. Duration 105 ms by bot id=7804678382
+DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 1018150043
 DEBUG:__main__:\u2705 Получено сообщение от пользователя: Иванов Иван Иванович
-89991234567
++79991234567
 Москва, ул. Ленина, д. 5
 example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-DEBUG:__main__:\u2705 Разобраны данные для пользователя 911657126 - ФИО: Иванов Иван Иванович, Телефон: 89991234567, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
+DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 1018150043: OrderForm:user_data
+DEBUG:__main__:\u2705 Разобраны данные для пользователя 1018150043 - ФИО: Иванов Иван Иванович, Телефон: +79991234567, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
 DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 911657126.
+DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 1018150043.
 DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500433 is handled. Duration 203 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500434 is handled. Duration 99 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500435 is handled. Duration 121 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Москва, ул. Ленина, д. 5
-Иванов Иван Иванович
-+7999123456
-example@mail.c
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-ERROR:__main__:\u274c Ошибка при разборе данных для пользователя 911657126: Не удалось определить все данные. Убедитесь, что указали ФИО, телефон, адрес и email.
-INFO:aiogram.event:Update id=806500436 is handled. Duration 90 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Москва, ул. Ленина, д. 5
-Иванов Иван Иванович
-+79991234566
-example@mail.ru
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-DEBUG:__main__:\u2705 Разобраны данные для пользователя 911657126 - ФИО: Иванов Иван Иванович, Телефон: +79991234566, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.ru
-DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 911657126.
-DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500437 is handled. Duration 348 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500438 is handled. Duration 156 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500439 is handled. Duration 92 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Москва, ул. Ленина, д. 5
-8999123456
-Иванов Иван Иванович
-example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-ERROR:__main__:\u274c Ошибка при разборе данных для пользователя 911657126: Не удалось определить все данные. Убедитесь, что указали ФИО, телефон, адрес и email.
-INFO:aiogram.event:Update id=806500440 is handled. Duration 93 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Москва, ул. Ленина, д. 5
-89991234564
-Иванов Иван Иванович
-example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-DEBUG:__main__:\u2705 Разобраны данные для пользователя 911657126 - ФИО: Иванов Иван Иванович, Телефон: 89991234564, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
-DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 911657126.
-DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500441 is handled. Duration 245 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500442 is handled. Duration 232 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500443 is handled. Duration 121 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: 1.Иванов Иван Иванович
-2.+79991234567
-3.Москва, ул. Ленина, д. 5
-4.example@mail.com
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-DEBUG:__main__:\u2705 Разобраны данные для пользователя 911657126 - ФИО: 1.Иванов Иван Иванович, Телефон: 2.+79991234567, Адрес: 3.Москва, ул. Ленина, д. 5, Email: 4.example@mail.com
-DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 911657126.
-DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500444 is handled. Duration 548 ms by bot id=7804678382
-INFO:aiogram.dispatcher:Polling stopped
-INFO:aiogram.dispatcher:Polling stopped for bot @chernikame_bot id=7804678382 - 'Черничная лавка'
+INFO:aiogram.event:Update id=806500452 is handled. Duration 279 ms by bot id=7804678382
