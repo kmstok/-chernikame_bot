@@ -7,16 +7,8 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:aiogram.dispatcher:Run polling for bot @chernikame_bot id=7804678382 - 'Черничная лавка'
 DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Обработка сообщения 294598394
-DEBUG:__main__:\u2705 Обработка сообщения 294598394
-INFO:aiogram.event:Update id=806500454 is handled. Duration 289 ms by bot id=7804678382
-INFO:aiogram.event:Update id=806500453 is handled. Duration 291 ms by bot id=7804678382
-INFO:aiogram.event:Update id=806500455 is handled. Duration 291 ms by bot id=7804678382
-INFO:aiogram.event:Update id=806500457 is handled. Duration 291 ms by bot id=7804678382
-INFO:aiogram.event:Update id=806500456 is handled. Duration 296 ms by bot id=7804678382
-INFO:aiogram.event:Update id=806500458 is handled. Duration 321 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500460 is handled. Duration 280 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-INFO:aiogram.event:Update id=806500459 is handled. Duration 92 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500461 is handled. Duration 171 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500462 is not handled. Duration 2 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500463 is not handled. Duration 2 ms by bot id=7804678382
