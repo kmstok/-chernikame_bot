@@ -142,18 +142,13 @@ async def ask_order_data(message: types.Message, state: FSMContext):
     logger.debug("✅ Вошел в обработчик 'Купить'")
     await state.set_state(OrderForm.user_data)
     logger.debug("✅ Состояние установлено на OrderForm.user_data")
-    # Восстанавливаем исходный текст без изменений:
+    # Восстанавливаем исходный текст без примера
     await message.answer(
         "Теперь укажи свои данные для отправки:\n"
         "1. ФИО\n"
         "2. Номер телефона\n"
         "3. Адрес пункта СДЭК\n"
-        "4. Электронная почта (туда придет трек-номер отслеживания)\n\n"
-        "Пример:\n"
-        "Иванов Иван Иванович\n"
-        "+79991234567\n"
-        "Москва, ул. Ленина, д. 5\n"
-        "example@mail.com",
+        "4. Электронная почта (туда придет трек-номер отслеживания)",
         reply_markup=types.ReplyKeyboardRemove()
     )
 
@@ -244,3 +239,4 @@ if __name__ == '__main__':
     threading.Thread(target=run_web_server, daemon=True).start()
     # Запускаем бота
     asyncio.run(main())
+
