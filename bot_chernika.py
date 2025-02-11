@@ -18,7 +18,6 @@ def index():
     return "Бот работает!"
 
 def run_web_server():
-    # Render задаёт переменную окружения PORT, если её нет — используем порт 5000
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
 
@@ -45,24 +44,33 @@ buy_button = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
-# === Функция экранирования Markdown-символов ===
+# === Функция экранирования специальных символов для Markdown ===
 def escape_markdown(text: str) -> str:
     escape_chars = r'\*_`['
     for char in escape_chars:
         text = text.replace(char, f"\\{char}")
     return text
 
+# === Новые ссылки на изображения (используем raw.githubusercontent.com) ===
+GLAZA_URL = "https://raw.githubusercontent.com/kmstok/-chernikame_bot/main/images/glaza.JPG"
+PALEC_URL = "https://raw.githubusercontent.com/kmstok/-chernikame_bot/main/images/palec.JPG"
+
 # === Команда /start – отправляем фото и текст одним сообщением ===
 @router.message(F.text == "/start")
 async def start(message: types.Message, state: FSMContext):
     logger.debug("✅ Вошел в обработчик /start")
     caption_text = "❤️Приветик! Здесь можешь заказать свой мерч❤️"
-    await bot.send_photo(
-        chat_id=message.chat.id,
-        photo="https://github.com/kmstok/-chernikame_bot/blob/main/images/glaza.JPG?raw=true",
-        caption=caption_text,
-        reply_markup=buy_button
-    )
+    try:
+        await bot.send_photo(
+            chat_id=message.chat.id,
+            photo=GLAZA_URL,
+            caption=caption_text,
+            reply_markup=buy_button
+        )
+        logger.debug("✅ Фото для /start отправлено успешно")
+    except Exception as e:
+        logger.error(f"❌ Ошибка при отправке фото для /start: {e}")
+        await message.answer("❌ Не удалось отправить фото. Попробуйте позже.")
 
 # === Обработчик нажатия "Купить" ===
 @router.message(F.text == "Купить")
@@ -95,7 +103,6 @@ async def process_order(message: types.Message, state: FSMContext):
         # Разделяем данные по строкам и убираем лишние пробелы
         lines = message.text.split("\n")
         lines = [line.strip() for line in lines if line.strip()]
-
         logger.debug(f"✅ Разделенные строки от пользователя {message.from_user.id}: {lines}")
 
         if len(lines) < 4:
@@ -140,17 +147,22 @@ async def process_order(message: types.Message, state: FSMContext):
             await message.answer("❌ Произошла ошибка при отправке данных. Попробуйте позже.")
             return
 
-        # Отправляем подтверждающее сообщение пользователю с фото и текстом в одном сообщении
+        # Отправляем подтверждающее сообщение пользователю (текст и фото в одном сообщении)
         confirmation_caption = (
             "🍃Готово! Поздравляю с покупкой🍃\n\n"
             "Мне нужно некоторое время, чтобы рассчитать стоимость отправки. Скоро свяжусь с тобой для оплаты и уточнения деталей ❤️"
         )
-        await bot.send_photo(
-            chat_id=message.chat.id,
-            photo="https://github.com/kmstok/-chernikame_bot/blob/main/images/palec.JPG?raw=true",
-            caption=confirmation_caption
-        )
-
+        try:
+            await bot.send_photo(
+                chat_id=message.chat.id,
+                photo=PALEC_URL,
+                caption=confirmation_caption
+            )
+            logger.debug("✅ Фото подтверждения заказа отправлено успешно")
+        except Exception as e:
+            logger.error(f"❌ Ошибка при отправке фото подтверждения заказа: {e}")
+            await message.answer("❌ Не удалось отправить фото подтверждения заказа.")
+        
         await state.clear()  # Очистка состояния после завершения
     else:
         logger.error(f"❌ Ошибка: Получено сообщение от пользователя {message.from_user.id}, но состояние не соответствует ожидаемому.")
@@ -182,3 +194,4 @@ if __name__ == '__main__':
     threading.Thread(target=run_web_server, daemon=True).start()
     # Запускаем бота
     asyncio.run(main())
+
