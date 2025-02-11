@@ -1,0 +1,21 @@
+DEBUG:asyncio:Using proactor: IocpProactor
+DEBUG:root:\u2705 Бот запущен...
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @chernikame_bot id=7804678382 - 'Черничная лавка'
+DEBUG:root:\u2705 Вошел в обработчик /start
+INFO:aiogram.event:Update id=806500323 is handled. Duration 317 ms by bot id=7804678382
+DEBUG:root:\u2705 Вошел в обработчик 'Купить'
+DEBUG:root:\u2705 Состояние установлено на OrderForm.user_data
+INFO:aiogram.event:Update id=806500324 is handled. Duration 97 ms by bot id=7804678382
+DEBUG:root:\u2705 Вошел в обработчик process_order для пользователя 294598394
+DEBUG:root:\u2705 Получено сообщение от пользователя: Иванов Иван Иванович
+89991234567
+Москва, ул. Ленина, д. 5
+example@mail.com
+DEBUG:root:\u2705 Текущее состояние перед обработкой для пользователя 294598394: OrderForm:user_data
+DEBUG:root:\u2705 Обрабатываем данные от пользователя 294598394
+DEBUG:root:\u2705 Разделенные строки от пользователя 294598394: ['Иванов Иван Иванович', '89991234567', 'Москва, ул. Ленина, д. 5', 'example@mail.com']
+DEBUG:root:\u2705 Получены данные от пользователя 294598394 - ФИО: Иванов Иван Иванович, Телефон: 89991234567, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
+DEBUG:root:\u2705 Все данные прошли проверку. Отправляю информацию админу.
+DEBUG:root:\u2705 Информация отправлена админу для пользователя 294598394.
+INFO:aiogram.event:Update id=806500325 is handled. Duration 254 ms by bot id=7804678382
