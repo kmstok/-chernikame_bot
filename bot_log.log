@@ -9,52 +9,20 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:aiogram.dispatcher:Run polling for bot @chernikame_bot id=7804678382 - 'Черничная лавка'
 DEBUG:__main__:\u2705 Вошел в обработчик /start
 DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500415 is handled. Duration 952 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500422 is handled. Duration 308 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
 DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500416 is handled. Duration 179 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500423 is handled. Duration 112 ms by bot id=7804678382
 DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 294598394
 DEBUG:__main__:\u2705 Получено сообщение от пользователя: Иванов Иван Иванович
-+79991234567
 Москва, ул. Ленина, д. 5
+89991234567
 example@mail.com
 DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 294598394: OrderForm:user_data
-DEBUG:__main__:\u2705 Обрабатываем данные от пользователя 294598394
-DEBUG:__main__:\u2705 Разделенные строки от пользователя 294598394: ['Иванов Иван Иванович', '+79991234567', 'Москва, ул. Ленина, д. 5', 'example@mail.com']
-DEBUG:__main__:\u2705 Получены данные от пользователя 294598394 - ФИО: Иванов Иван Иванович, Телефон: +79991234567, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
+DEBUG:__main__:\u2705 Разобраны данные для пользователя 294598394 - ФИО: Иванов Иван Иванович, Телефон: 89991234567, Адрес: Москва, ул. Ленина, д. 5, Email: example@mail.com
 DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
 DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 294598394.
 DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500417 is handled. Duration 1053 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик /start
-DEBUG:__main__:\u2705 Фото для /start отправлено успешно
-INFO:aiogram.event:Update id=806500418 is handled. Duration 235 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик 'Купить'
-DEBUG:__main__:\u2705 Состояние установлено на OrderForm.user_data
-INFO:aiogram.event:Update id=806500419 is handled. Duration 95 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Новикова Дарья Ильинична
-г. Ростов-на-Дону, ул Комарова 20 (сдек)
-89381480774
-dora-celibanoba@mail.ru
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-DEBUG:__main__:\u2705 Обрабатываем данные от пользователя 911657126
-DEBUG:__main__:\u2705 Разделенные строки от пользователя 911657126: ['Новикова Дарья Ильинична', 'г. Ростов-на-Дону, ул Комарова 20 (сдек)', '89381480774', 'dora-celibanoba@mail.ru']
-DEBUG:__main__:\u2705 Получены данные от пользователя 911657126 - ФИО: Новикова Дарья Ильинична, Телефон: г. Ростов-на-Дону, ул Комарова 20 (сдек), Адрес: 89381480774, Email: dora-celibanoba@mail.ru
-ERROR:__main__:\u274c Ошибка при проверке данных от пользователя 911657126: \u274c Некорректный номер телефона. Убедитесь, что указали номер полностью.
-INFO:aiogram.event:Update id=806500420 is handled. Duration 153 ms by bot id=7804678382
-DEBUG:__main__:\u2705 Вошел в обработчик process_order для пользователя 911657126
-DEBUG:__main__:\u2705 Получено сообщение от пользователя: Новикова Дарья Ильинична
-89381480774
-г. Ростов-на-Дону, ул Комарова 20 (сдек)
-dora-celibanoba@mail.ru
-DEBUG:__main__:\u2705 Текущее состояние перед обработкой для пользователя 911657126: OrderForm:user_data
-DEBUG:__main__:\u2705 Обрабатываем данные от пользователя 911657126
-DEBUG:__main__:\u2705 Разделенные строки от пользователя 911657126: ['Новикова Дарья Ильинична', '89381480774', 'г. Ростов-на-Дону, ул Комарова 20 (сдек)', 'dora-celibanoba@mail.ru']
-DEBUG:__main__:\u2705 Получены данные от пользователя 911657126 - ФИО: Новикова Дарья Ильинична, Телефон: 89381480774, Адрес: г. Ростов-на-Дону, ул Комарова 20 (сдек), Email: dora-celibanoba@mail.ru
-DEBUG:__main__:\u2705 Все данные прошли проверку. Отправляю информацию админу.
-DEBUG:__main__:\u2705 Информация отправлена админу для пользователя 911657126.
-DEBUG:__main__:\u2705 Фото подтверждения заказа отправлено успешно
-INFO:aiogram.event:Update id=806500421 is handled. Duration 196 ms by bot id=7804678382
+INFO:aiogram.event:Update id=806500424 is handled. Duration 213 ms by bot id=7804678382
 INFO:aiogram.dispatcher:Polling stopped
 INFO:aiogram.dispatcher:Polling stopped for bot @chernikame_bot id=7804678382 - 'Черничная лавка'

@@ -86,7 +86,6 @@ def parse_user_data(text: str):
     full_name = None
     address = None
     if len(others) >= 2:
-        # Если один из кандидатов содержит запятую, считаем его адресом
         if ',' in others[0]:
             address = others[0]
             full_name = others[1]
@@ -94,7 +93,6 @@ def parse_user_data(text: str):
             address = others[1]
             full_name = others[0]
         else:
-            # Если нет запятых – можно ориентироваться на количество слов (предположим, ФИО обычно короче)
             if len(others[0].split()) <= len(others[1].split()):
                 full_name = others[0]
                 address = others[1]
@@ -104,7 +102,6 @@ def parse_user_data(text: str):
     else:
         return False, "Не удалось определить ФИО и адрес. Проверьте ввод данных."
 
-    # Если что-то не определено, сообщаем об ошибке
     if not (email and phone and full_name and address):
         return False, "Не удалось определить все данные. Убедитесь, что указали ФИО, телефон, адрес и email."
 
@@ -145,12 +142,18 @@ async def ask_order_data(message: types.Message, state: FSMContext):
     logger.debug("✅ Вошел в обработчик 'Купить'")
     await state.set_state(OrderForm.user_data)
     logger.debug("✅ Состояние установлено на OrderForm.user_data")
+    # Восстанавливаем исходный текст без изменений:
     await message.answer(
-        "Теперь укажи свои данные для отправки. Можно вводить в любом порядке:\n"
-        "• ФИО\n"
-        "• Номер телефона (с +7 или с 8, главное, чтобы цифр было 11 или 12)\n"
-        "• Адрес (например, Москва, ул. Ленина, д. 5)\n"
-        "• Email (например, example@mail.com)",
+        "Теперь укажи свои данные для отправки:\n"
+        "1. ФИО\n"
+        "2. Номер телефона\n"
+        "3. Адрес пункта СДЭК\n"
+        "4. Электронная почта (туда придет трек-номер отслеживания)\n\n"
+        "Пример:\n"
+        "Иванов Иван Иванович\n"
+        "+79991234567\n"
+        "Москва, ул. Ленина, д. 5\n"
+        "example@mail.com",
         reply_markup=types.ReplyKeyboardRemove()
     )
 
@@ -241,5 +244,3 @@ if __name__ == '__main__':
     threading.Thread(target=run_web_server, daemon=True).start()
     # Запускаем бота
     asyncio.run(main())
-
-
