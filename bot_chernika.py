@@ -55,6 +55,73 @@ def escape_markdown(text: str) -> str:
 GLAZA_URL = "https://raw.githubusercontent.com/kmstok/-chernikame_bot/main/images/glaza.JPG"
 PALEC_URL = "https://raw.githubusercontent.com/kmstok/-chernikame_bot/main/images/palec.JPG"
 
+# === Функция для разбора данных пользователя (без привязки к порядку ввода) ===
+def parse_user_data(text: str):
+    """
+    Пытаемся определить данные пользователя по строкам.
+    Ожидается, что в сообщении будут присутствовать:
+      - Email (строка, содержащая символ "@")
+      - Телефон (строка, в которой после удаления нецифровых символов остаётся 11 или 12 цифр)
+      - Остальные две строки: одну считаем ФИО, другую – адрес.
+    Если встречается запятая, то с высокой вероятностью это адрес.
+    """
+    email_pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    lines = [line.strip() for line in text.split("\n") if line.strip()]
+    if len(lines) < 4:
+        return False, "Недостаточно данных. Укажите ФИО, телефон, адрес и email."
+
+    email = None
+    phone = None
+    others = []
+    for line in lines:
+        # Если строка содержит @ и удовлетворяет шаблону email, то это email
+        if "@" in line and re.match(email_pattern, line):
+            email = line
+        # Если после удаления всего, кроме цифр, остаётся 11 или 12 цифр, считаем, что это телефон
+        elif len(re.sub(r'\D', '', line)) in [11, 12]:
+            phone = line
+        else:
+            others.append(line)
+    # Для остальных двух строк попробуем определить: если есть запятая – скорее всего это адрес
+    full_name = None
+    address = None
+    if len(others) >= 2:
+        # Если один из кандидатов содержит запятую, считаем его адресом
+        if ',' in others[0]:
+            address = others[0]
+            full_name = others[1]
+        elif ',' in others[1]:
+            address = others[1]
+            full_name = others[0]
+        else:
+            # Если нет запятых – можно ориентироваться на количество слов (предположим, ФИО обычно короче)
+            if len(others[0].split()) <= len(others[1].split()):
+                full_name = others[0]
+                address = others[1]
+            else:
+                full_name = others[1]
+                address = others[0]
+    else:
+        return False, "Не удалось определить ФИО и адрес. Проверьте ввод данных."
+
+    # Если что-то не определено, сообщаем об ошибке
+    if not (email and phone and full_name and address):
+        return False, "Не удалось определить все данные. Убедитесь, что указали ФИО, телефон, адрес и email."
+
+    return True, {"full_name": full_name, "phone": phone, "address": address, "email": email}
+
+# === Функция для проверки корректности данных ===
+def validate_data(full_name: str, phone: str, address: str, email: str) -> (bool, str):
+    # Проверка номера телефона: после удаления нецифровых символов должно быть 11 или 12 цифр
+    phone_digits = re.sub(r'\D', '', phone)
+    if len(phone_digits) not in [11, 12]:
+        return False, "❌ Некорректный номер телефона. Укажите корректный номер (11 или 12 цифр)."
+    # Проверка корректности email с помощью регулярного выражения
+    email_pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    if not re.match(email_pattern, email):
+        return False, "❌ Некорректный email. Введите правильный адрес почты."
+    return True, None
+
 # === Команда /start – отправляем фото и текст одним сообщением ===
 @router.message(F.text == "/start")
 async def start(message: types.Message, state: FSMContext):
@@ -79,12 +146,11 @@ async def ask_order_data(message: types.Message, state: FSMContext):
     await state.set_state(OrderForm.user_data)
     logger.debug("✅ Состояние установлено на OrderForm.user_data")
     await message.answer(
-        "Теперь укажи свои данные для отправки:\n"
-        "1. ФИО\n"
-        "2. Номер телефона\n"
-        "3. Адрес пункта СДЭК\n"
-        "4. Электронная почта (туда придет трек-номер отслеживания)\n\n"
-        "Пример:\nИванов Иван Иванович\n+79991234567\nМосква, ул. Ленина, д. 5\nexample@mail.com",
+        "Теперь укажи свои данные для отправки. Можно вводить в любом порядке:\n"
+        "• ФИО\n"
+        "• Номер телефона (с +7 или с 8, главное, чтобы цифр было 11 или 12)\n"
+        "• Адрес (например, Москва, ул. Ленина, д. 5)\n"
+        "• Email (например, example@mail.com)",
         reply_markup=types.ReplyKeyboardRemove()
     )
 
@@ -99,31 +165,24 @@ async def process_order(message: types.Message, state: FSMContext):
     logger.debug(f"✅ Текущее состояние перед обработкой для пользователя {message.from_user.id}: {current_state}")
 
     if current_state == 'OrderForm:user_data':
-        logger.debug(f"✅ Обрабатываем данные от пользователя {message.from_user.id}")
-        # Разделяем данные по строкам и убираем лишние пробелы
-        lines = message.text.split("\n")
-        lines = [line.strip() for line in lines if line.strip()]
-        logger.debug(f"✅ Разделенные строки от пользователя {message.from_user.id}: {lines}")
-
-        if len(lines) < 4:
-            logger.error(f"❌ Ошибка: Недостаточно данных от пользователя {message.from_user.id}.")
-            await message.answer("❌ Пожалуйста, отправьте 4 строки с вашими данными (ФИО, телефон, адрес, email).")
+        success, result = parse_user_data(message.text)
+        if not success:
+            logger.error(f"❌ Ошибка при разборе данных для пользователя {message.from_user.id}: {result}")
+            await message.answer(result)
             return
 
-        full_name, phone, address, email = lines[:4]
+        # Извлекаем разобранные данные
+        full_name = escape_markdown(result["full_name"])
+        phone = escape_markdown(result["phone"])
+        address = escape_markdown(result["address"])
+        email = escape_markdown(result["email"])
 
-        # Экранируем данные для безопасного вывода в Markdown
-        full_name = escape_markdown(full_name)
-        phone = escape_markdown(phone)
-        address = escape_markdown(address)
-        email = escape_markdown(email)
-
-        logger.debug(f"✅ Получены данные от пользователя {message.from_user.id} - ФИО: {full_name}, Телефон: {phone}, Адрес: {address}, Email: {email}")
+        logger.debug(f"✅ Разобраны данные для пользователя {message.from_user.id} - ФИО: {full_name}, Телефон: {phone}, Адрес: {address}, Email: {email}")
 
         # Проверка корректности данных
         valid, error_message = validate_data(full_name, phone, address, email)
         if not valid:
-            logger.error(f"❌ Ошибка при проверке данных от пользователя {message.from_user.id}: {error_message}")
+            logger.error(f"❌ Ошибка при валидации данных для пользователя {message.from_user.id}: {error_message}")
             await message.answer(error_message)
             return
 
@@ -168,18 +227,6 @@ async def process_order(message: types.Message, state: FSMContext):
         logger.error(f"❌ Ошибка: Получено сообщение от пользователя {message.from_user.id}, но состояние не соответствует ожидаемому.")
         await message.answer("❌ Произошла ошибка с состоянием. Пожалуйста, начни заново.")
 
-# === Функция для проверки данных ===
-def validate_data(full_name: str, phone: str, address: str, email: str) -> (bool, str):
-    # Удаляем все нецифровые символы из номера телефона
-    phone_digits = re.sub(r'\D', '', phone)
-    if len(phone_digits) < 10:
-        return False, "❌ Некорректный номер телефона. Убедитесь, что указали номер полностью."
-    # Проверка корректности email с помощью регулярного выражения
-    email_pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-    if not re.match(email_pattern, email):
-        return False, "❌ Некорректный email. Введите правильный адрес почты."
-    return True, None
-
 # === Основная функция запуска бота ===
 async def main():
     try:
@@ -194,4 +241,5 @@ if __name__ == '__main__':
     threading.Thread(target=run_web_server, daemon=True).start()
     # Запускаем бота
     asyncio.run(main())
+
 
